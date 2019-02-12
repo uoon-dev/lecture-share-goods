@@ -1,14 +1,14 @@
 <template>
     <li>
         <img src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-270,h-350" alt="">
-        <p class="name">{{product.name}}</p>
+        <p class="name">{{ product.name }}</p>
         <Options :product="product"/>
-        <p class="provider">{{product.provider}}</p>
+        <p class="provider">{{ product.provider }}</p>
         <div class="bottom-price">
-            <p class="price">{{product.price}}원</p>
+            <p class="price">{{ product.price }}원</p>
             <v-icon name="cart-plus"/>
         </div>
-        <p class="shipping-price">+ 배송료 {{product.shipping.price}}</p>
+        <p class="shipping-price">+ 배송료 {{ product.shipping.price }}</p>
     </li>
 </template>
 
