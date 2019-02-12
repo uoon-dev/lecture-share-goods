@@ -2,7 +2,7 @@
     <li>
         <img src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-270,h-350" alt="">
         <p class="name">{{ product.name }}</p>
-        <Options :product="product.options"/>
+        <Options :options="product.options"/>
         <p class="provider">{{ product.provider }}</p>
         <div class="bottom-price">
             <p class="price">{{ product.price }}원</p>

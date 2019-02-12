@@ -1,6 +1,6 @@
 <template>
     <select>
-        <option v-for="(option, i) in product" :key="i">
+        <option v-for="(option, i) in options" :key="i">
             {{ option.color }} {{ option.size }} 재고: {{ option.stock }}
         </option>
     </select>
@@ -9,7 +9,7 @@
 <script>
 export default {
     props: {
-        product: Array,
+        options: Array,
         default: {}
     }
 }
