@@ -9,7 +9,8 @@
 <script>
 export default {
     props: {
-        product: Array
+        product: Array,
+        default: {}
     }
 }
 </script>
