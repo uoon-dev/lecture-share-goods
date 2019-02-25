@@ -1,21 +1,19 @@
 <template>
   <div id="app">
     <Header/>
-    <Title title="상품목록"/>
-    <ProductControls :products="products"/>
+    <router-view :products="products"></router-view>
+    <notifications group="foo" position="bottom left" />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header/Header'
-import Title from '@/components/Title/Title'
 import ProductControls from '@/components/ProductControls/ProductControls'
 
 export default {
-  name: 'app',
+  name: 'app', 
   components: {
-    Header,
-    Title, 
+    Header, 
     ProductControls
   },
   created() {

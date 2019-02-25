@@ -1,13 +1,18 @@
 <template>
     <section class="products">
-      <ul class="item">
-        <ProductControl v-for="(product, i) in products" :key="i"
-        :product="product"/>
-      </ul>
+        <Title title="상품목록"/>
+        <ul class="item">
+            <ProductControl
+                v-for="(product, i) in products" :key="i"
+                :product="product"
+                @addToCart="addToCart"
+            />
+        </ul>
     </section>
 </template>
 
 <script>
+import Title from '@/components/Title/Title'
 import ProductControl from './ProductControl';
 
 export default {
@@ -18,14 +23,28 @@ export default {
         }
     },
     components: {
+        Title,
         ProductControl
     },
     data() {
         return {
-            items: 5
+            items: 5,
         };
     },
-    mounted() {
+    methods: {
+        notified() {
+            this.$notify({
+                group: 'foo',
+                title: '성공',
+                text: '장바구니에 추가되었습니다!'
+            });
+        },
+        addToCart({product, options}) {
+            const data = { ...product };
+            data.options = options;
+            this.$http.post('https://share-goods-2a8f1.firebaseio.com/cart.json', data);
+            this.notified();
+        }
     }
 }
 </script>

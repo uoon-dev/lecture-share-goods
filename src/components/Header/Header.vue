@@ -2,9 +2,9 @@
     <header class="header">
       <img alt="Vue logo" src="../../assets/logo.png" class="logo">
       <ul class="navigation-items">
-        <li>상품목록</li>
-        <li>장바구니</li>
-        <li>주문목록</li>
+        <router-link to="/" class="li">상품목록</router-link>
+        <router-link to="/cart" class="li">장바구니</router-link>
+        <router-link to="/order" class="li">주문목록</router-link>
       </ul>
     </header>
 </template>
@@ -15,24 +15,24 @@
   }
 
   .header {
-    // width height값 설정 가능 inline block 
     display: flex;
     flex-direction: row;
-    justify-content: space-around;//flex-start 
+    justify-content: space-around;
     align-items: center;
-    //row; // default 값 
     .navigation-items {
       display: flex;
-        li {
+        .li {
             list-style: none;
             width: 80px;
-            background-color: #ccc;
+            background-color: #4d4d4d;
             color: #fff;
             height: 40px;
             padding: 10px;
             margin-right: 10px;
             text-align: center;
             line-height: 40px;
+            text-decoration: none;
+            border-radius: 5px;
         }
     }
   }
