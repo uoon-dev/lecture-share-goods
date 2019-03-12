@@ -6,8 +6,16 @@
         <router-link to="/cart" class="li">장바구니</router-link>
         <router-link to="/order" class="li">주문목록</router-link>
       </ul>
+      <div id="naverIdLogin"></div>
     </header>
 </template>
+
+<script>
+export default {
+  mounted() {
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   .logo {
@@ -19,6 +27,10 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    #naverIdLogin {
+      display: flex;
+      align-items: right;
+    }
     .navigation-items {
       display: flex;
         .li {
