@@ -1,26 +1,21 @@
 <template>
   <div id="app">
     <Header/>
-    <router-view :products="products"></router-view>
+    <router-view></router-view>
     <notifications group="foo" position="bottom left" />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header/Header'
-import ProductControls from '@/components/ProductControls/ProductControls'
 
 export default {
   name: 'app', 
   components: {
-    Header, 
-    ProductControls
+    Header
   },
   created() {
-    this.$http
-    .get('https://share-goods-2a8f1.firebaseio.com/goods.json')
-    .then(res => this.products = res.data);// get, post, put 
-    console.log('created..', this.products);
+   
   },
   mounted() {
   },
@@ -34,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #app {
-    font-family: 'helvetica';
-  }
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
 </style>
