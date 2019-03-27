@@ -1,11 +1,18 @@
 <template>
 	<div> 
+		<!-- v-bind: ==> : 
+		v-on: ==> @
+		-->
 		<input v-if="elementType === 'input'" 
 		:type="type" :value="value" 
 		:min="min" :max="max"
 		@input="changed">
 
-		<select v-if="elementType === 'select'" :value="value" @input="changed">
+		<input v-if="elementType === 'text'" 
+		:type="type" :placeholder="placeholder" 
+		>
+
+		<select v-if="elementType === 'select'" @input="changed">
 			<option :value="option.id" v-for="(option, i) in options" :key="i" >
 				{{ option.color }} {{ option.size }} 재고: {{ option.stock }}
 			</option>
@@ -14,7 +21,7 @@
 </template>
 
 <script>
-// Spread operator as attributes 
+// spread operator as attributes 
 export default {
 	props: {
 		elementType: {
@@ -26,8 +33,12 @@ export default {
 			default: "text"
 		},
 		value: {
-			type: Number, 
-			required: true
+			type: String, 
+			default: '0'
+		},
+		placeholder: {
+			type: String,
+			default: ''
 		},
 		min: {
 			type: String,
