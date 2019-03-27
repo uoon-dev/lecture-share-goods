@@ -1,13 +1,17 @@
 <template>
 	<div> 
-		<img :src="options[0].img" alt="">
+		<img :src="src" alt="">
 	</div>
 </template>
 
 <script>
-// Spread operator as attributes 
+// spread operator as attributes 
 export default {
 	props: {
+		src: {
+			type: String,
+			default: ''
+		},
 		options: {
 			type: Array,
 			default: function () { return [] }

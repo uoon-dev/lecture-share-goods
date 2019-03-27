@@ -6,6 +6,7 @@ import axios from 'axios'
 import Notifications from 'vue-notification'
 import VueRouter from 'vue-router'
 import routes from './route';
+import store from './store';
 
 Vue.component('v-icon', Icon);
 Vue.config.productionTip = false;
@@ -19,6 +20,7 @@ const router = new VueRouter({
 })
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

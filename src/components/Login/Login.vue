@@ -28,7 +28,6 @@ export default {
   },
   mounted() {
     let naverLogin = new naver.LoginWithNaverId({
-			callbackUrl: "http://localhost:8080/cart",
       isPopup: true, /* 팝업을 통한 연동처리 여부 */
       callbackHandle: true,
 			loginButton: {color: "green", type: 3, height: 30} /* 로그인 버튼의 타입을 지정 */

@@ -2,17 +2,15 @@
 	<section class="products">
 		<Spinner v-if="!isLoaded" class="spinner"/>
 		<Title title="상품목록"/>
-		<ul class="item">
+		<!-- <ul class="item"> -->
 			<ProductControl
-				v-for="(product, i) in products" :key="i"
-				:product="product"
-				@addToCart="addToCart"
 			/>
-		</ul>
+		<!-- </ul> -->
 	</section>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import Title from '@/components/Title/Title'
 import ProductControl from './ProductControl';
 import Spinner from '@/components/UI/Spinner/Spinner'
@@ -27,7 +25,9 @@ export default {
 		this.$http
 		.get('https://shopping-goods.firebaseio.com/goods.json')
 		.then(res => {
-			this.products = res.data
+			// this.products = res.data
+			this.setProducts(res.data);
+			// this.$store.state.products = res.data;
 			this.isLoaded = true;
 		}); 
 		console.log('created..', this.products);
@@ -35,26 +35,23 @@ export default {
 	data() {
 		return {
 			items: 5,
-			products: [],
 			isLoaded: false
 		};
 	},
+	computed: {
+		...mapState({
+			products(state) {
+				return state.products
+			} 
+			// products() {
+			// 	return this.$store.state.products
+			// }
+		})
+	},
 	methods: {
-		notified() {
-			this.$notify({
-				group: 'foo',
-				title: '성공',
-				text: '장바구니에 추가되었습니다!'
-			});
-		},
-		addToCart({product, options}) {
-			const data = { ...product };
-			data.options = data.options[0];
-			console.log(data);
-			console.log(data.options);
-			this.$http.post('https://shopping-goods.firebaseio.com/cart.json', data);
-			this.notified();
-		}
+		...mapActions({
+			setProducts: 'setProducts'
+		})
 	}
 }
 </script>
